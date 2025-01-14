@@ -1,4 +1,4 @@
-package hokase.hfwork.inventorys;
+package hokase.hfwork.bukkit.inventorys;
 
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;

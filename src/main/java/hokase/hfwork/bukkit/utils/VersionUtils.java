@@ -1,4 +1,4 @@
-package hokase.hfwork.utils;
+package hokase.hfwork.bukkit.utils;
 
 import org.bukkit.Bukkit;
 

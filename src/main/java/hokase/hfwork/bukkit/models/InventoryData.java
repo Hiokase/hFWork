@@ -1,4 +1,4 @@
-package hokase.hfwork.models;
+package hokase.hfwork.bukkit.models;
 
 import org.bukkit.inventory.ItemStack;
 

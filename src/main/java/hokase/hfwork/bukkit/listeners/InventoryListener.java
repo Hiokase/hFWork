@@ -1,8 +1,8 @@
-package hokase.hfwork.listeners;
+package hokase.hfwork.bukkit.listeners;
 
-import hokase.hfwork.inventorys.guis.InventoryGUI;
-import hokase.hfwork.inventorys.guis.PaginatedGUI;
-import hokase.hfwork.models.SlotAction;
+import hokase.hfwork.bukkit.inventorys.guis.InventoryGUI;
+import hokase.hfwork.bukkit.inventorys.guis.PaginatedGUI;
+import hokase.hfwork.bukkit.models.SlotAction;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -1,7 +1,7 @@
-package hokase.hfwork.api;
+package hokase.hfwork.bukkit.api;
 
-import hokase.hfwork.inventorys.guis.InventoryGUI;
-import hokase.hfwork.inventorys.guis.PaginatedGUI;
+import hokase.hfwork.bukkit.inventorys.guis.InventoryGUI;
+import hokase.hfwork.bukkit.inventorys.guis.PaginatedGUI;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;

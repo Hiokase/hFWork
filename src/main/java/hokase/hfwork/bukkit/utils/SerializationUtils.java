@@ -1,4 +1,4 @@
-package hokase.hfwork.utils;
+package hokase.hfwork.bukkit.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

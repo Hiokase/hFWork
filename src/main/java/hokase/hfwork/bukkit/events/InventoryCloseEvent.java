@@ -1,4 +1,4 @@
-package hokase.hfwork.events;
+package hokase.hfwork.bukkit.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

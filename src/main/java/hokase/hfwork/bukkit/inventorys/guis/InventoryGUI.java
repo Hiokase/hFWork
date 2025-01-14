@@ -1,7 +1,7 @@
-package hokase.hfwork.inventorys.guis;
+package hokase.hfwork.bukkit.inventorys.guis;
 
-import hokase.hfwork.listeners.InventoryListener;
-import hokase.hfwork.models.SlotAction;
+import hokase.hfwork.bukkit.listeners.InventoryListener;
+import hokase.hfwork.bukkit.models.SlotAction;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

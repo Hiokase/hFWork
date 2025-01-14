@@ -6,12 +6,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class hFWorkAPI {
 
-   public hFWorkLoaderClass getHFWorkLoaderClass(JavaPlugin plugin) {
-       return new hFWorkLoaderClass(plugin);
-   }
+    public hFWorkLoaderClass createLoader(JavaPlugin plugin) {
+        return new hFWorkLoaderClass(plugin);
+    }
 
-   public hFWork getPlugin(){
-       return hFWork.hfInstace();
-   }
-
+    public hFWork getCore() {
+        return hFWork.hfInstace();
+    }
 }

@@ -22,58 +22,60 @@ public class hFWorkLoaderClass {
         this.commandRegister = new RegisterCommands();
     }
 
-    public void loadCommands(String packageName) {
-        load(packageName, LoadType.COMMAND);
+    public void setupCommands(String packageName) {
+        loadComponents(packageName, ComponentType.COMMAND);
     }
 
-    public void loadListeners(String packageName) {
-        load(packageName, LoadType.LISTENER);
+    public void setupListeners(String packageName) {
+        loadComponents(packageName, ComponentType.LISTENER);
     }
 
-    public void loadAll(String packageName) {
-        load(packageName, LoadType.ALL);
+    public void setupAll(String packageName) {
+        loadComponents(packageName, ComponentType.ALL);
     }
 
-    private void load(String packageName, LoadType loadType) {
+    private void loadComponents(String packageName, ComponentType componentType) {
         if (plugin == null || packageName == null) {
             throw new IllegalArgumentException("Plugin and package name must not be null!");
         }
 
-        for (Class<?> clazz : ClassScanner.getClassesFromPackage(plugin, packageName)) {
+        for (Class<?> clazz : ClassScanner.fetchClassesFromPackage(plugin, packageName)) {
             try {
-                processClass(clazz, loadType);
+                initializeComponent(clazz, componentType);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void processClass(Class<?> clazz, LoadType loadType) throws InstantiationException, IllegalAccessException {
-        Class<?> targetType = loadType.getTargetType();
+    private void initializeComponent(Class<?> clazz, ComponentType componentType) throws InstantiationException, IllegalAccessException {
+        Class<?> targetType = componentType.getTargetType();
 
         if (!clazz.getName().contains("$") && (targetType == null || targetType.isAssignableFrom(clazz))) {
             Object instance = clazz.newInstance();
 
             if (instance instanceof Listener) {
-                plugin.getLogger().info("Listener loaded: " + clazz.getName());
+                plugin.getLogger().info("Listener initialized: " + clazz.getName());
                 Bukkit.getPluginManager().registerEvents((Listener) instance, plugin);
             } else if (instance instanceof Command) {
                 Command command = (Command) instance;
-                plugin.getLogger().info("Command loaded: " + command.getName());
-                commandRegister.register(plugin, command);
+                plugin.getLogger().info("Command initialized: " + command.getName());
+                commandRegister.attachCommand(plugin, command);
             }
         }
     }
 
-    @Getter
-    public enum LoadType {
+    public enum ComponentType {
         COMMAND(Command.class), LISTENER(Listener.class), ALL(null);
 
         private final Class<?> targetType;
 
-        LoadType(Class<?> targetType) {
+        ComponentType(Class<?> targetType) {
             this.targetType = targetType;
         }
 
+        public Class<?> getTargetType() {
+            return targetType;
+        }
     }
 }

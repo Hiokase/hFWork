@@ -9,6 +9,7 @@ import java.lang.reflect.Field;
 
 public class RegisterCommands {
 
+
     private final CommandMap commandMap;
 
     public RegisterCommands() {
@@ -21,7 +22,7 @@ public class RegisterCommands {
         }
     }
 
-    public void register(JavaPlugin plugin, Command command) {
+    public void attachCommand(JavaPlugin plugin, Command command) {
         commandMap.register(plugin.getName(), command);
     }
 }

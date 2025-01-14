@@ -12,7 +12,7 @@ import java.util.jar.JarFile;
 
 public class ClassScanner {
 
-    public static List<Class<?>> getClassesFromJar(File jarFile, String packageName) {
+    public static List<Class<?>> fetchClassesFromJar(File jarFile, String packageName) {
         List<Class<?>> classes = new ArrayList<>();
         try (JarFile jar = new JarFile(jarFile)) {
             String packagePath = packageName.replace('.', '/');
@@ -31,11 +31,11 @@ public class ClassScanner {
         return classes;
     }
 
-    public static List<Class<?>> getClassesFromPackage(Object instance, String packageName) {
+    public static List<Class<?>> fetchClassesFromPackage(Object instance, String packageName) {
         CodeSource source = instance.getClass().getProtectionDomain().getCodeSource();
         List<Class<?>> classes = new ArrayList<>();
         if (source != null) {
-            processJar(source.getLocation(), packageName, classes);
+            scanJarForClasses(source.getLocation(), packageName, classes);
         }
         return classes;
     }
@@ -48,7 +48,7 @@ public class ClassScanner {
         }
     }
 
-    private static void processJar(URL resource, String packageName, List<Class<?>> classes) {
+    private static void scanJarForClasses(URL resource, String packageName, List<Class<?>> classes) {
         String packagePath = packageName.replace('.', '/');
         String jarPath = resource.getPath().replace("%20", " ").replaceFirst("[.]jar[!].*", ".jar").replaceFirst("file:", "");
         try (JarFile jar = new JarFile(jarPath)) {

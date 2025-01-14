@@ -11,6 +11,9 @@ public class hFWork extends JavaPlugin {
 
     public void onEnable() {
         instace = this;
+        hFWorkAPI api = new hFWorkAPI();
+        hFWorkLoaderClass loader = api.createLoader(this);
+        loader.setupListeners("hokase.hfwork.bukkit.listeners");
         getServer().getPluginManager().registerEvents(new InventoryListener(), this);
     }
 

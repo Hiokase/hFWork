@@ -1,0 +1,8 @@
+name: hFWork
+version: '1.0'
+main: hokase.hfwork.framework
+api-version: '1.21'
+load: STARTUP
+authors: [ SoOHokase_ ]
+description: Um simples plugins de skins
+website: https://github.com/hiokase

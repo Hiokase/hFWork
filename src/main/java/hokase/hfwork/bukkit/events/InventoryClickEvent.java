@@ -1,9 +1,11 @@
 package hokase.hfwork.bukkit.events;
 
+import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 
+@Getter
 public class InventoryClickEvent {
     private final Player player;
     private final ItemStack item;
@@ -15,15 +17,4 @@ public class InventoryClickEvent {
         this.clickType = clickType;
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public ItemStack getItem() {
-        return item;
-    }
-
-    public ClickType getClickType() {
-        return clickType;
-    }
 }

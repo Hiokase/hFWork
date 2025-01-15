@@ -3,6 +3,7 @@ package hokase.hfwork.bukkit.inventorys.guis;
 import hokase.hfwork.bukkit.listeners.InventoryListener;
 import hokase.hfwork.bukkit.models.SlotAction;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -15,20 +16,19 @@ import java.util.Map;
 /**
  * Representa um inventário personalizado.
  */
+@RequiredArgsConstructor
 @Getter
 public class InventoryGUI {
     /**
      * -- GETTER --
      *  Retorna o inventário.
      *
-     * @return O inventário.
      */
     private final Inventory inventory;
     /**
      * -- GETTER --
      *  Retorna as ações dos slots.
      *
-     * @return Um mapa de ações dos slots.
      */
     private final Map<Integer, SlotAction> actions = new HashMap<>();
 
@@ -56,6 +56,10 @@ public class InventoryGUI {
         actions.put(slot, action);
     }
 
+    public Map<Integer, SlotAction> getActions() {
+        return actions;
+    }
+
     /**
      * Abre o inventário para um jogador.
      *
@@ -64,6 +68,10 @@ public class InventoryGUI {
     public void open(Player player) {
         InventoryListener.registerInventory(this);
         player.openInventory(inventory);
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
 
 }

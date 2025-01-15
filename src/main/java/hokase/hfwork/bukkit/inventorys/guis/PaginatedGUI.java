@@ -29,7 +29,7 @@ public class PaginatedGUI {
      *
      * @return Um mapa de ações dos slots.
      */
-    @Getter
+
     private final Map<Integer, SlotAction> actions = new HashMap<>();
 
     /**
@@ -43,6 +43,10 @@ public class PaginatedGUI {
         this.title = title;
         this.size = size;
         this.itemProvider = itemProvider;
+    }
+
+    public Map<Integer, SlotAction> getActions() {
+        return actions;
     }
 
     /**
@@ -103,4 +107,5 @@ public class PaginatedGUI {
 
         return inventory;
     }
+
 }

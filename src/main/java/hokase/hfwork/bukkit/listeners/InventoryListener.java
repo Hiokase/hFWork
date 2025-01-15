@@ -3,6 +3,8 @@ package hokase.hfwork.bukkit.listeners;
 import hokase.hfwork.bukkit.inventorys.guis.InventoryGUI;
 import hokase.hfwork.bukkit.inventorys.guis.PaginatedGUI;
 import hokase.hfwork.bukkit.models.SlotAction;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,6 +18,7 @@ import java.util.Map;
 /**
  * Listener para eventos de inventário.
  */
+
 public class InventoryListener implements Listener {
     private static final Map<Inventory, InventoryGUI> guis = new HashMap<>();
     private static final Map<Inventory, PaginatedGUI> paginatedGuis = new HashMap<>();
@@ -29,6 +32,7 @@ public class InventoryListener implements Listener {
         guis.put(gui.getInventory(), gui);
     }
 
+
     /**
      * Registra um inventário paginado.
      *
@@ -37,6 +41,8 @@ public class InventoryListener implements Listener {
     public static void registerInventory(PaginatedGUI gui) {
         paginatedGuis.put(gui.getCurrentPage(), gui);
     }
+
+
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
